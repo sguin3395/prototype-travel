@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar type="text" debounce="500" (ionChange)="getItems($event)"></ion-searchbar>
+  <ion-list *ngIf="isItemAvailable">
+    <ion-item *ngFor="let item of items">{{item}}</ion-item>
+  </ion-list>
+  <div class="colour-box"></div>
+
+  <ion-list *ngIf="form.length>0">
+    <ion-item *ngFor="let entry of form">
+      <ion-checkbox color="primary" [(ngModel)]="entry.isChecked" slot="start"></ion-checkbox>
+      <ion-label>{{entry.val}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button color="dark" (click)="onSubmit()">Submit</ion-button>
+  <ion-button color="dark" (click)="paynow()">Pay with INAI</ion-button>
+</ion-content>
